@@ -1,0 +1,9 @@
+# ignore big stuff
+*.png
+*.jpg
+*.jpeg
+images/
+.studio-pics/
+.git/
+node_modules/
+
