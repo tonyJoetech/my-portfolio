@@ -96,6 +96,9 @@ header {
     align-items: center;
     margin-left: 5rem;
 }
+nav li {
+    list-style: none;
+}
 
 .scroll-link {
     color: white;
@@ -333,7 +336,7 @@ body #loader {
     height: 75vh;
     padding-top: 8rem;
     padding-right: 3rem;
-    animation: fadeIn 2s linear 5s;
+    animation: fadeIn 2s linear 3s;
 }
 
 .name {
@@ -434,7 +437,7 @@ body #loader {
     display: flex;
     align-items: center;
     padding-top: 3rem;
-    animation: fadeInx 2s linear 5s;
+    animation: fadeInx 2s linear 3s;
 }
 
 .image-wrapper {
