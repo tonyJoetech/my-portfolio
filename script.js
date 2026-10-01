@@ -457,6 +457,7 @@ submit.addEventListener("click", (e) => {
           email.value = "";
           text.value = "";
           msg.style.display = "none";
+          btnText.classList.remove("progress")
         }, 3000);
 
         btnText.innerHTML = `<i class="fas fa-check"></i> Message Sent`
