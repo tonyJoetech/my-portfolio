@@ -447,8 +447,8 @@ submit.addEventListener("click", (e) => {
 
         loader.classList.add("show-loader");
         btnText.classList.add("hide-text");
-        submit.disabled = false;
         btnText.classList.add("progress")
+        submit.disabled = false;
 
         setTimeout(() => {
           loader.classList.remove("show-loader");
@@ -457,9 +457,9 @@ submit.addEventListener("click", (e) => {
           email.value = "";
           text.value = "";
           msg.style.display = "none";
-          btnText.classList.remove("progress")
         }, 3000);
-
+        
+          btnText.classList.remove("progress")
         btnText.innerHTML = `<i class="fas fa-check"></i> Message Sent`
 
       })

@@ -398,6 +398,7 @@ body #loader {
     background-color: #00CFFF;
     color: #01012C;
     transition: all 0.3s ease;
+    cursor: pointer;
 
 
     &.contact-btn:hover {
@@ -420,6 +421,7 @@ body #loader {
     font-size: 15px;
     background-color: #00CFFF;
     transition: all 0.3s ease;
+    cursor: pointer;
 
 
     &.dwnld-btn:hover {
@@ -2179,7 +2181,7 @@ textarea::placeholder {
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 700px) {
 
     header {
         position: sticky;
@@ -2240,7 +2242,7 @@ textarea::placeholder {
         font-size: 20px;
         position: absolute;
         margin-right: 1rem;
-        bottom: 1.3rem;
+        bottom: 1.9rem;
         color: white;
         box-shadow: none;
         animation: none;
@@ -2286,8 +2288,398 @@ textarea::placeholder {
     }
 
     .top-link {
-        top: 55rem;
+        top: 90vh;
         width: 10%;
+        right: 1rem;
+        padding: 0.2rem;
+
+    }
+
+    .hero-section {
+        padding-bottom: 2rem;
+        height: fit-content;
+    }
+
+    .hero-wrapper {
+        width: 92%;
+        padding: 0px 0 10px;
+    }
+
+    .name {
+        font-size: 0.95rem;
+        word-spacing: 0.2rem;
+    }
+
+    .introductory-div {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding: 0;
+        height: fit-content;
+
+    }
+
+    .intro-text {
+        font-size: 24px;
+    }
+
+    .bio-para {
+        font-size: 1.2rem;
+    }
+
+    .hero-image-wrapper {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 0;
+        padding: 0;
+        height: 40vh;
+    }
+
+    .image-wrapper {
+        width: 210px;
+        height: 230px;
+    }
+
+    .btn-wrapper {
+        height: fit-content;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-btn,
+    .dwnld-btn {
+        margin-top: 0.5rem;
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 0.8rem 1rem;
+        justify-content: center;
+    }
+
+    .about-section-wrapper {
+        width: 92%;
+    }
+
+    .about-header {
+        font-size: 1.6em;
+    }
+
+    .about-intro-text,
+    .experince-header {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .about-content-wrapper {
+        padding: 0;
+    }
+
+    .about-content-para {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .about-image {
+        height: 400px;
+    }
+
+    .about-btn-wrapper {
+        margin: 0 auto;
+        width: 60%;
+        margin-top: 1rem;
+    }
+
+    .about-btn {
+        padding: 0.4rem 0.5rem;
+    }
+
+    .counter-div {
+        height: fit-content;
+        padding: 7rem 0;
+        justify-content: center;
+        display: flex;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .counter-wrapper {
+        flex-direction: column;
+        width: 92%;
+        gap: 2rem;
+    }
+
+    .yrs-exp,
+    .client,
+    .awards {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1.2rem;
+        text-align: left;
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .award-num-wrapper,
+    .pp-num-wrapper {
+        margin: 0;
+        width: 50%;
+        justify-content: flex-start;
+    }
+
+    .number {
+        font-size: 2rem;
+    }
+
+    .pp-num-wrapper svg {
+        width: 60px;
+        height: 60px;
+    }
+
+
+
+    .skill-section {
+        padding: 2rem 10px;
+    }
+
+    .skill-header {
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+    }
+
+    .tools-wrapper {
+        padding: 1rem;
+        margin-top: 0;
+    }
+
+    .tools img {
+        width: 100px;
+        height: 50px;
+    }
+
+    .progress-bar-wrapper {
+        margin-left: 1rem;
+    }
+
+
+    .service-section,
+    .project-section {
+        padding: 2.5rem 0;
+    }
+
+    .service-header,
+    .project-header-wrapper h2 {
+        font-size: 1.5rem;
+    }
+
+    .service-container {
+        width: 92%;
+    }
+
+    .service-card {
+        width: 100%;
+        padding: 22px;
+    }
+
+    .project-header-wrapper {
+        width: 92%;
+    }
+
+    .coming-soon-container {
+        width: 92%;
+        padding: 1.5rem;
+    }
+
+    .coming-project {
+        padding: 1rem;
+    }
+
+    .contact-section {
+    top: 12vh;
+    left: 0;
+    width: 100%;
+    height: calc(110vh - 12vh);
+    margin-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    padding-top: 1rem;
+    z-index: 101;
+
+}
+
+    .remove-contact {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .contact-header-wrapper {
+        width: 92%;
+    }
+
+    .contact-header-wrapper h2 {
+        font-size: 1.3rem;
+        padding-top: 0.5rem;
+    }
+
+    .contact-header-wrapper p {
+        font-size: 0.9rem;
+    }
+
+    .input-container {
+        width: 92%;
+    }
+
+    .contact-cards {
+        padding: 0.5rem;
+    }
+
+    .remove-contact {
+        font-size: 2rem;
+        margin-right: 0.8rem;
+        margin-top: 0.2rem;
+    }
+
+    .msg p {
+        width: 92%;
+        font-size: 0.9rem;
+    }
+
+
+    .footer {
+        padding: 2.5rem 0 0;
+    }
+
+    .footer-wrapper {
+        width: 92%;
+        flex-direction: column;
+    }
+
+    .footer-about,
+    .footer-links,
+    .footer-contact {
+        width: 100%;
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        position: sticky;
+        top: 0;
+        height: 12vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #loader {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav {
+        top: 11.7vh;
+    }
+
+    .logo {
+        height: 50px;
+        margin-left: 0;
+        margin-right: 2rem;
+        margin-top: 0.4rem;
+        width: 60px;
+    }
+
+    .nav>li>a {
+        font-size: 1.1rem;
+    }
+
+    .mode-wrapper {
+        width: 40px;
+        height: 35px;
+        position: absolute;
+        top: 1.2rem;
+        right: 3rem;
+        padding-top: 1rem;
+    }
+
+    .dark-mode svg,
+    .light-mode svg {
+        margin-bottom: 1.2rem;
+        height: 20px;
+        width: 20px;
+    }
+
+    .respnsive-btn {
+        background-color: transparent;
+        box-shadow: none;
+        animation: none;
+    }
+
+    .respnsive-btn i {
+        width: 90px;
+        font-size: 20px;
+        position: absolute;
+        margin-right: 1rem;
+        bottom: 1.9rem;
+        color: white;
+        box-shadow: none;
+        animation: none;
+    }
+
+    .header-btn-wrapper {
+        width: 12%;
+        padding: 0;
+        background-color: inherit;
+        position: absolute;
+        right: 12rem;
+        padding-bottom: 1.5rem;
+        margin-top: 0.2rem;
+    }
+
+    .menu {
+        height: 5vh;
+        width: 9%;
+        margin-top: 0.7rem;
+        margin-bottom: 3rem;
+        position: absolute;
+        top: 1.1rem;
+        right: 8em;
+    }
+
+    .menu svg {
+        width: 30px;
+        height: 30px;
+        padding-top: 0;
+    }
+
+    .dd-btn-wrapper {
+        height: 6vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mode-wrapper {
+        margin: 0;
+        padding-top: 1.5rem;
+        height: 8vh;
+    }
+
+    .top-link {
+        top: 90vh;
+        width: 10%;
+        right: 1rem;
+        padding: 0.2rem ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5%;
     }
 
     .hero-section {
