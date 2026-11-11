@@ -52,7 +52,6 @@ window.addEventListener('load', handleContactBtn);
 window.addEventListener('resize', handleContactBtn);
 
 
-
 const hamburger = document.querySelector('.menu');
 const navLinks = document.querySelector('.nav');
 const scrollLinks = document.querySelectorAll('.scroll-link');
