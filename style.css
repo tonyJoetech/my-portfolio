@@ -1,4 +1,5 @@
 
+
 :root {
     --bg: #050524;
     --bg-soft: #09092f;
@@ -88,6 +89,100 @@ img {
     border-radius: 50%;
     filter: blur(80px);
     opacity: .13;
+}
+
+
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #01012C;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease;
+}
+
+body #loader {
+    overflow-y: hidden;
+}
+
+.hide-loader {
+    visibility: hidden;
+}
+
+
+#loader p {
+    color: #00CFFF;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    animation: fade 1.5s ease-in-out infinite;
+}
+
+.bars-loader {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 20vh;
+}
+
+
+
+.bar {
+    display: block;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to top, #00CFFF, #00a8d4);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00CFFF;
+    animation: bounce 1.2s ease-in-out infinite;
+}
+
+.bar:nth-child(1) {
+    animation-delay: 0s;
+    height: 30px;
+}
+
+.bar:nth-child(2) {
+    animation-delay: 0.2s;
+    height: 50px;
+}
+
+.bar:nth-child(3) {
+    animation-delay: 0.4s;
+    height: 70px;
+}
+
+.bar:nth-child(4) {
+    animation-delay: 0.6s;
+    height: 40px;
+}
+
+.bar:nth-child(5) {
+    animation-delay: 0.6s;
+    height: 30px;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scaleX(0.3);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
 }
 
 .ambient-one {
@@ -186,7 +281,7 @@ img {
     border-radius: 12px;
     background: var(--accent);
     color: #041127;
-    font-weight: 800;
+    font-weight: 600;
     font-size: 12px;
     letter-spacing: .1px;
     box-shadow: 0 8px 26px rgba(0, 207, 255, .14);

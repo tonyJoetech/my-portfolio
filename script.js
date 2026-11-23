@@ -1,3 +1,15 @@
+// preloader
+
+const loader = document.getElementById("loader");
+window.addEventListener("load", () => {
+  loader.classList.add("#loader");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>{
+    loader.classList.add("hide-loader");
+      document.body.style.overflow="auto";
+  }, 3000)
+
+})
 
 
 const body = document.body;
