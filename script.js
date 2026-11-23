@@ -1,185 +1,62 @@
-// preloader
-
-const loader = document.getElementById("loader");
-window.addEventListener("load", () => {
-  loader.classList.add("#loader");
-  document.body.style.overflow="hidden";
-  setTimeout(()=>{
-    loader.classList.add("hide-loader");
-      document.body.style.overflow="auto";
-  }, 3000)
-
-})
 
 
-// mode toggle
+const body = document.body;
 
-const darkmode = document.querySelector(".dark-mode");
-const lightmode = document.querySelector(".light-mode");
-const modechanger = document.querySelector(".mode-wrapper");
+const themeToggle = document.getElementById("themeToggle");
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-modechanger.addEventListener("click", (mode) => {
 
-  document.body.classList.toggle("change-background");
+// DARK AND LIGHT MODE
 
-  const isDark = document.body.classList.contains("change-background");
+// Restore saved theme
+const savedTheme = localStorage.getItem("joetech-theme");
 
-  if (isDark) {
-    darkmode.style.display = "none";
-    lightmode.style.display = "block";
-  } else {
-    darkmode.style.display = "block";
-    lightmode.style.display = "none";
-  }
+if (savedTheme === "light") {
+  body.classList.add("light");
+}
+
+updateThemeButton();
+
+themeToggle.addEventListener("click", () => {
+
+  body.classList.toggle("light");
+
+  localStorage.setItem(
+    "joetech-theme",
+    body.classList.contains("light") ? "light" : "dark"
+  );
+
+  updateThemeButton();
 
 });
 
+function updateThemeButton() {
 
+  const isLight = body.classList.contains("light");
 
-function handleContactBtn() {
-  const resContact = document.getElementById("contact-btn");
-  if (!resContact) return;
+  themeToggle.innerHTML = isLight
+    ? '<i class="fa-regular fa-moon"></i><span class="theme-label">Dark</span>'
+    : '<i class="fa-regular fa-sun"></i><span class="theme-label">Light</span>';
 
-  if (window.innerWidth < 900) {
-    resContact.innerHTML = '<i class="bi bi-telephone"></i>';
-    resContact.classList.add("respnsive-btn");
-  } else {
-    resContact.textContent = "Hire Me";
-    resContact.classList.remove("respnsive-btn");
-  }
-};
-window.addEventListener('load', handleContactBtn);
-window.addEventListener('resize', handleContactBtn);
+  themeToggle.setAttribute(
+    "aria-label",
+    isLight ? "Switch to dark mode" : "Switch to light mode"
+  );
 
-
-const hamburger = document.querySelector('.menu');
-const navLinks = document.querySelector('.nav');
-const scrollLinks = document.querySelectorAll('.scroll-link');
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('show-nav');
-});
-
-scrollLinks.forEach(function (link) {
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-    const id1 = e.currentTarget.getAttribute('href');
-    const target = document.querySelector(id1);
-    document.body.style.overflow = "visible";
-    const section = document.querySelector(id1);
-
-    scrollLinks.forEach(item => item.classList.remove("active"));
-
-    link.classList.add("active")
-    
-     section.scrollIntoView({
-      behavior: "smooth"
-    });
-
-    navLinks.classList.remove('show-nav');
-    contactSection.classList.remove("drop-contact");
-    if (target) {
-      target.classList.add("active")
-      document.body.classList.add("contact-open")
-      setTimeout(() => {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
-    }
-  });
-}); 
-
-const allsections = document.querySelectorAll("section");
-
-const newobserver = new IntersectionObserver((entries) => {
-
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting) {
-
-      const currentId = entry.target.getAttribute("id");
-
-      scrollLinks.forEach(link => {
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === `#${currentId}`) {
-          link.classList.add("active");
-        }
-      });
-
-    }
-
-  });
-
-}, {
-  threshold: 0.5
-});
-
-allsections.forEach(section => {
-  newobserver.observe(section);
-});
-
-
-const sections = document.querySelectorAll(".section");
-
-const firstobserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show-section");
-      }
-      else {
-        entry.target.classList.remove("show-section")
-      }
-    });
-  },
-  {
-    threshold: 0.2,
-  }
-);
-
-sections.forEach((section) => {
-  firstobserver.observe(section);
-});
-
-// bottom right arrow
-
-const header = document.querySelector("header")
-const topLink = document.querySelector(".top-link");
-window.addEventListener("scroll", function () {
-
-  const navHeight = header.getBoundingClientRect().height;
-  const scrollHeight = window.pageYOffset;
-
-
-  if (scrollHeight > 500) {
-    topLink.style.display = "block"
-  }
-
-  else {
-    topLink.style.display = "none"
-  }
-});
-
-
-
-
-
-
-
-// Hero Section
+}
 
 // Writing text
 
-const words = [" Creative", " Skilled", " Smart"];
+
+const words = ["Front-End Developer", " Problem Solver", " Creative Developer"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-const typingElement = document.querySelector('.typing-text');
-
+const typingElement = document.querySelector('.typed-word');
 function type() {
+
+
   const currentWord = words[wordIndex];
 
   if (isDeleting) {
@@ -206,220 +83,272 @@ function type() {
 
 type();
 
-// About Section
+// ==============================
+// MOBILE NAVIGATION
+// ==============================
 
+menuToggle.addEventListener("click", () => {
 
-// About Experince Nav
+  // const opened = navMenu.classList.toggle("open");
+  // console.log(opened);
+  
+  if(!document.querySelector("nav").classList.contains("open")){
+    document.querySelector("nav").classList.add("open")
+  }
+  else{
+     document.querySelector("nav").classList.remove("open")
+  }
+  menuToggle.setAttribute(
+    "aria-expanded",
+    String(opened)
+  );
 
-const about = document.querySelector(".about-section");
-const btns = document.querySelectorAll(".about-btn");
-const articles = document.querySelectorAll(".content");
-
-about.addEventListener("click", (e) => {
-  const id = e.target.dataset.id;
-
-  if (id) {
-    btns.forEach(function (btn) {
-      btn.classList.remove("active");
-      e.target.classList.add("active")
-
-    });
-    articles.forEach((article) => {
-      article.classList.remove("active");
-
-    });
-    const element = document.getElementById(id);
-    element.classList.add("active")
-
-  };
+  menuToggle.setAttribute(
+    "aria-label",
+    opened ? "Close navigation menu" : "Open navigation menu"
+  );
 
 });
 
 
-// Number Counter
+// Close mobile menu when a link is clicked
 
+navMenu.querySelectorAll("a").forEach(link => {
 
+  link.addEventListener("click", () => {
 
-const counters = document.querySelectorAll('.number');
+    navMenu.classList.remove("open");
 
-function animateCount(el) {
+    menuToggle.setAttribute("aria-expanded", "false");
 
-  const target = parseInt(el.getAttribute('data-target'));
-
-  const duration = 800;
-  const stepTime = 20;
-  const totalSteps = duration / stepTime;
-  const increment = target / totalSteps;
-  let current = 0;
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      el.textContent = target + "+";
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(current) + "+";
-    }
-  }, stepTime);
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCount(entry.target);
-    } else {
-      entry.target.textContent = "0+";
-      entry.target.dataset.animating = "false";
-    }
   });
+
+});
+
+
+// SCROLL REVEAL ANIMATION
+
+const revealObserver = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add("visible");
+
+      revealObserver.unobserve(entry.target);
+
+    }
+
+  });
+
 }, {
-  threshold: 0.3
-});
-
-counters.forEach(counter => {
-  observer.observe(counter);
+  threshold: 0.12
 });
 
 
+document.querySelectorAll(".reveal").forEach(element => {
 
-// Skill Section
+  revealObserver.observe(element);
 
-// Skill Loading Animation
+});
+
+
+// ACTIVE NAVIGATION LINK
+
+const sectionIds = [
+  "home",
+  "about",
+  "skills",
+  "services",
+  "projects",
+  "contact"
+];
+
+const sections = sectionIds
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
+
+const navLinks = [
+  ...document.querySelectorAll(".nav-link")
+];
+
+
+const sectionObserver = new IntersectionObserver(entries => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      navLinks.forEach(link => {
+
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${entry.target.id}`
+        );
+
+      });
+
+    }
+
+  });
+
+}, {
+  rootMargin: "-35% 0px -55% 0px"
+});
+
+
+sections.forEach(section => {
+
+  sectionObserver.observe(section);
+
+});
+
+
+// // Skill Section
+
+// // Skill Loading Animation
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const skillSection = document.getElementById('skill');
-  const progressBars = document.querySelectorAll('.progress-bar-wrapper > div');
-  const percentages = document.querySelectorAll('.percentage');
+    const skillSection = document.getElementById('skills');
+    const progressBars = document.querySelectorAll('.progress > span');
+    const percentages = document.querySelectorAll('.percentage');
 
-  const animateBars = () => {
-    progressBars.forEach((bar, i) => {
-    const targetNum = parseInt(percentages[i].dataset.target);
+    const animateBars = () => {
 
-      bar.style.width = targetNum + "%";
+        progressBars.forEach((bar, i) => {
 
-      let count = 0;
-      const speed = 1500 / targetNum;
-      const counter = setInterval(() => {
-        count++;
-        percentages[i].textContent = count + '%';
-        if (count >= targetNum) {
-          clearInterval(counter);
-        }
-      }, speed);
-    });
-  };
+            const targetNum = parseInt(percentages[i].dataset.target);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateBars();
-      } else {
+            // Reset bar and percentage
+            bar.style.width = "0%";
+            percentages[i].textContent = "0%";
 
-        progressBars.forEach((bar) => {
-          bar.style.width = "0%";
+            // Start animation
+            setTimeout(() => {
+                bar.style.width = targetNum + "%";
+            }, 100);
+
+            let count = 0;
+            const speed = 1500 / targetNum;
+
+            const counter = setInterval(() => {
+                count++;
+                percentages[i].textContent = count + "%";
+
+                if (count >= targetNum) {
+                    clearInterval(counter);
+                }
+
+            }, speed);
+
         });
-        percentages.forEach((percent) => {
-          percent.textContent = "0%";
-        });
-      }
-    });
-  }, { threshold: 0.4 });
 
-  observer.observe(skillSection);
-
-});
-
-
-
-// Contant Section
-
-const submit = document.querySelector(".send-msg-btn");
-const arrow = document.querySelector(".arrow");
-
-submit.addEventListener("mouseover", () => {
-
-  if (!arrow.classList.contains("show-arrow")) {
-    arrow.classList.add("show-arrow")
-    submit.classList.add("send-msg-btn-hover");
-  };
-});
-
-submit.addEventListener("mouseout", () => {
-  if (arrow.classList.contains("show-arrow")) {
-    arrow.classList.remove("show-arrow");
-    submit.classList.remove("send-msg-btn-hover");
-  };
-});
-
-
-const contactSection = document.querySelector(".contact-section");
-
-const contactBtn = document.querySelectorAll(".show-contact");
-
-
-document.querySelector(".remove-contact").addEventListener("click", () => {
-  contactSection.classList.remove("drop-contact");
-  document.body.style.overflow = "visible";
-     
-});
-
-contactBtn.forEach(function (allbtn) {
-  allbtn.addEventListener("click", () => {
-
-
-    if (!contactSection.classList.contains("drop-contact")) {
-      contactSection.classList.add("drop-contact");
-       document.body.classList.add("contact-open");
-       document.body.style.overflow = "hidden";
-     
-    } else {
-      contactSection.classList.add("drop-contact");
-       document.body.classList.add("contact-open");
-       document.body.style.overflow = "visible";
     };
-  });
 
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                animateBars();
+
+            } else {
+
+                progressBars.forEach(bar => {
+                    bar.style.width = "0%";
+                });
+
+                percentages.forEach(percent => {
+                    percent.textContent = "0%";
+                });
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.2
+    });
+
+    observer.observe(skillSection);
 
 });
 
-// contact form validation
+// AUTOMATIC COPYRIGHT YEAR
 
+
+
+// CONTACT FORM
 
 emailjs.init({
   publicKey: "kY7Zl4PuXDWT0CKqm",
 });
 
+const submit = document.querySelector(".form-button")
+console.log(submit);
+
 submit.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const fullName = document.getElementById("FullName");
+  const fullName = document.getElementById("fullName");
   const email = document.getElementById("email");
   const valemail = email.value;
-  const text = document.getElementById("text");
+  const text = document.getElementById("message");
+  const status = document.getElementById("formStatus");
+  const subject = document.getElementById("subject")
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (fullName.value.trim() === "") {
+  if (fullName.value.trim() === "" || fullName.value.length < 3) {
     fullName.classList.add("error")
-    setTimeout(function () {
+    fullName.focus()
+    status.style.display = "block"
+    status.style.color = "red"
+    status.textContent = "Your name must be more than three characters"
+    fullName.addEventListener("input", () => {
       fullName.classList.remove("error")
-    }, 4000)
+      status.style.display = "none"
+    })
 
   }
 
   else if (!emailRegex.test(valemail)) {
     email.classList.add("error")
-    setTimeout(function () {
+    email.focus()
+    status.style.display = "block"
+    status.style.color = "red"
+    status.textContent = "Please Enter a valid email address"
+    email.addEventListener("input", () => {
       email.classList.remove("error")
-    }, 4000)
+      status.style.display = "none"
+    })
   }
+else if (subject.value === "") {
+    subject.classList.add("error");
+    subject.focus();
 
+    status.style.display = "block";
+    status.style.color = "red";
+    status.textContent = "Please choose a subject";
 
-  else if (text.value.trim() === "") {
+    subject.addEventListener("change", () => {
+        subject.classList.remove("error");
+        status.style.display = "none";
+    });
+}
+
+  else if (text.value.trim() === "" || text.value.length < 10) {
     text.classList.add("error")
-    setTimeout(function () {
+    text.focus()
+    status.style.display = "block"
+    status.style.color = "red"
+    status.textContent = "Message Must be atleast 5 words"
+    text.addEventListener("input", () => {
       text.classList.remove("error")
-    }, 4000)
+      status.style.display = "none"
+    })
   }
 
   else {
@@ -455,10 +384,11 @@ submit.addEventListener("click", (e) => {
           fullName.value = "";
           email.value = "";
           text.value = "";
+          subject.value = ""
           msg.style.display = "none";
         }, 3000);
-        
-          btnText.classList.remove("progress")
+
+        btnText.classList.remove("progress")
         btnText.innerHTML = `<i class="fas fa-check"></i> Message Sent`
 
       })
@@ -468,11 +398,10 @@ submit.addEventListener("click", (e) => {
         btnText.classList.remove("hide-text");
         submit.disabled = false;
         btnText.textContent = "Failed to send message. Retry";
-        btnText.style.fontSize="0.9rem";
-        btnText.style.cursor ="pointer";
+        btnText.style.fontSize = "0.9rem";
+        btnText.style.cursor = "pointer";
         console.error();
       });
 
   }
 });
-
